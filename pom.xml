@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.6.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>net.oofa</groupId>
+    <artifactId>k8sdemo</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>k8sdemo</name>
+    <description>Demo project for fabric8 k8s client</description>
+
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+
+    <dependencies>
+
+        <!-- https://mvnrepository.com/artifact/io.fabric8/kubernetes-client -->
+        <dependency>
+            <groupId>io.fabric8</groupId>
+            <artifactId>kubernetes-client</artifactId>
+            <version>4.3.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
+                <configuration>
+                    <forkCount>1</forkCount>
+                    <reuseForks>false</reuseForks>
+                    <!-- We cleanup system properties an env vars, so that we can test in a predictable env -->
+                    <environmentVariables>
+                        <KUBERNETES_MASTER />
+                        <KUBERNETES_API_VERSION />
+                        <KUBERNETES_TRUST_CERTIFICATES />
+                        <KUBERNETES_CERTS_CA_FILE />
+                        <KUBERNETES_CERTS_CA_DATA />
+                        <KUBERNETES_CERTS_CLIENT_FILE />
+                        <KUBERNETES_CERTS_CLIENT_DATA />
+                        <KUBERNETES_CERTS_CLIENT_KEY_FILE />
+                        <KUBERNETES_CERTS_CLIENT_KEY_DATA />
+                        <KUBERNETES_CERTS_CLIENT_KEY_ALGO />
+                        <KUBERNETES_CERTS_CLIENT_KEY_PASSPHRASE />
+                        <KUBERNETES_AUTH_BASIC_USERNAME />
+                        <KUBERNETES_AUTH_BASIC_PASSWORD />
+                        <KUBERNETES_AUTH_TRYKUBECONFIG />
+                        <KUBERNETES_AUTH_TRYSERVICEACCOUNT />
+                        <KUBERNETES_AUTH_TOKEN />
+                        <KUBERNETES_WATCH_RECONNECTINTERVAL />
+                        <KUBERNETES_WATCH_RECONNECTLIMIT />
+                        <KUBERNETES_REQUEST_TIMEOUT />
+                        <KUBERNETES_NAMESPACE />
+                        <KUBERNETES_TLS_VERSIONS>TLSv1.2,TLSv1.1,TLSv1</KUBERNETES_TLS_VERSIONS>
+                    </environmentVariables>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
